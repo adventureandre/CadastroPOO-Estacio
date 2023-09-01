@@ -17,10 +17,10 @@ public class ExcluirPessoas {
         this.sc = sc;
         this.pessoa =  pessoa;
         this.empresa = empresa;
-        addPessoa();
+        excluirPessoa();
     }
 
-    private void addPessoa(){
+    private void excluirPessoa(){
         System.out.println("====Excluir====");
         String tipoPessoa;
         do {

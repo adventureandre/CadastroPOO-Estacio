@@ -21,6 +21,23 @@ public class IncluirPessoas {
         addPessoa();
     }
 
+    private int lerNumeroInteiro() {
+        int numero = 0;
+        boolean entradaValida = false;
+
+        while (!entradaValida) {
+            if (sc.hasNextInt()) {
+                numero = sc.nextInt();
+                entradaValida = true;
+            } else {
+                System.out.println("Por favor, digite um número válido: ");
+                sc.next();
+            }
+        }
+
+        return numero;
+    }
+
     private void addPessoa(){
         System.out.println("====INCLUIR====");
         String tipoPessoa;
@@ -33,7 +50,7 @@ public class IncluirPessoas {
         do {
             if (tipoPessoa.equals("f")) {
                 System.out.println("Digite o id da pessoa: ");
-                int idPessoa = sc.nextInt();
+                int idPessoa = lerNumeroInteiro();
                 sc.nextLine(); // Limpar o buffer
 
                 System.out.println("Insira os dados... ");
@@ -41,7 +58,7 @@ public class IncluirPessoas {
                 String nomePessoa = sc.nextLine();
 
                 System.out.print("Idade: ");
-                int idadePessoa = sc.nextInt();
+                int idadePessoa = lerNumeroInteiro();
                 sc.nextLine(); // Limpar o buffer
 
                 System.out.print("Cpf: ");
@@ -57,7 +74,7 @@ public class IncluirPessoas {
 
             } else if (tipoPessoa.equals("j")) {
                 System.out.println("Digite o id da Empresa: ");
-                int idEmpresa = sc.nextInt();
+                int idEmpresa = lerNumeroInteiro();
                 sc.nextLine(); // Limpar o buffer
 
                 System.out.println("Insira os dados... ");

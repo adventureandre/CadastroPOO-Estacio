@@ -1,10 +1,9 @@
 package application;
 
-import model.entidades.PessoaFisica;
 import model.gerenciadores.PessoaFisicaRepo;
 import model.gerenciadores.PessoaJuridicaRepo;
 
-import java.util.List;
+import java.io.IOException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -40,19 +39,31 @@ public class Main {
                     AlterarPessoa alterarPessoa = new AlterarPessoa(sc, repo1, repo2);
                     break;
                 case 3:
-                    ExcluirPessoas excluirPessoas = new ExcluirPessoas(sc, repo1,repo2);
+                    ExcluirPessoas excluirPessoas = new ExcluirPessoas(sc, repo1, repo2);
                     break;
                 case 4:
-                    // Código para buscar pelo Id
+                    BuscarPessoa buscarPessoa = new BuscarPessoa(sc, repo1, repo2);
                     break;
                 case 5:
                     ListaTodos listaTodos = new ListaTodos(sc, repo1, repo2);
                     break;
                 case 6:
-                    // Código para persistir dados
+                    System.out.println("====Dados Salvos====");
+                    try {
+                        repo1.persistir("pessoasFisicas.dat");
+                        repo2.persistir("pessoasJuridica.dat");
+                    } catch (IOException erro) {
+                        System.out.println("Erro ao recuperar os dados: " + erro.getMessage());
+                    }
                     break;
                 case 7:
-                    // Código para recuperar dados
+                    System.out.println("====Dados Recuperados====");
+                    try {
+                        repo1.recuperar("pessoasFisicas.dat");
+                        repo2.recuperar("pessoasJuridica.dat");
+                    } catch (IOException | ClassNotFoundException e) {
+                        System.out.println("Erro ao recuperar os dados: " + e.getMessage());
+                    }
                     break;
                 case 0:
                     System.out.println("Programa finalizado.");

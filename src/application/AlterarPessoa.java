@@ -19,6 +19,23 @@ public class AlterarPessoa {
         alterarPessoa();
     }
 
+    private int lerNumeroInteiro() {
+        int numero = 0;
+        boolean entradaValida = false;
+
+        while (!entradaValida) {
+            if (sc.hasNextInt()) {
+                numero = sc.nextInt();
+                entradaValida = true;
+            } else {
+                System.out.println("Por favor, digite um número válido: ");
+                sc.next();
+            }
+        }
+
+        return numero;
+    }
+
     private void alterarPessoa() {
         System.out.println("====ALTERAR====");
         String tipoPessoa;
@@ -32,7 +49,7 @@ public class AlterarPessoa {
         do {
             if (tipoPessoa.equals("f")) {
                 System.out.println("Digite o id da pessoa: ");
-                int idPessoa = sc.nextInt();
+                int idPessoa = lerNumeroInteiro();
                 sc.nextLine();
 
                 System.out.println("Insira os Novos dados... ");
@@ -40,7 +57,7 @@ public class AlterarPessoa {
                 String nomePessoa = sc.nextLine();
 
                 System.out.print("Idade: ");
-                int idadePessoa = sc.nextInt();
+                int idadePessoa = lerNumeroInteiro();
                 sc.nextLine();
 
                 System.out.print("Cpf: ");
@@ -60,7 +77,7 @@ public class AlterarPessoa {
 
             } else if (tipoPessoa.equals("j")) {
                 System.out.println("Digite o id da Empresa: ");
-                int idEmpresa = sc.nextInt();
+                int idEmpresa = lerNumeroInteiro();
                 sc.nextLine(); // Limpar o buffer
 
                 System.out.println("Insira os Novos dados... ");
