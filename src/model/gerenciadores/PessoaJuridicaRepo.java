@@ -25,9 +25,16 @@ public class PessoaJuridicaRepo {
         }
     }
 
-    public void excluir(PessoaJuridica pessoaJuridica) {
-        pessoasJuridicas.remove(pessoaJuridica);
+    public void excluir(int id) {
+        PessoaJuridica pessoaExcluir = obter(id);
+        if (pessoaExcluir != null) {
+            pessoasJuridicas.remove(pessoaExcluir);
+            System.out.println("PessoaJuridica com Id " + id + " excluída com sucesso.");
+        } else {
+            System.out.println("PessoaJuridica com Id " + id + " não encontrada.");
+        }
     }
+
 
     public PessoaJuridica obter(int id) {
         for (PessoaJuridica pessoa : pessoasJuridicas) {

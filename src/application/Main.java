@@ -34,19 +34,19 @@ public class Main {
             switch (opcao) {
                 case 1:
                     //Adicionar Pessoas Juridica e Fisica
-                        IncluirPessoas incluirpessoas = new IncluirPessoas(sc, repo1, repo2);
+                    IncluirPessoas incluirpessoas = new IncluirPessoas(sc, repo1, repo2);
                     break;
                 case 2:
                     AlterarPessoa alterarPessoa = new AlterarPessoa(sc, repo1, repo2);
                     break;
                 case 3:
-                    // Código para excluir pessoa
+                    ExcluirPessoas excluirPessoas = new ExcluirPessoas(sc, repo1,repo2);
                     break;
                 case 4:
                     // Código para buscar pelo Id
                     break;
                 case 5:
-                    ListaTodos listaTodos = new ListaTodos(sc,repo1, repo2);
+                    ListaTodos listaTodos = new ListaTodos(sc, repo1, repo2);
                     break;
                 case 6:
                     // Código para persistir dados
