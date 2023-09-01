@@ -14,8 +14,8 @@ public class PessoaJuridicaRepo {
         pessoasJuridicas = new ArrayList<>();
     }
 
-    public void inserir(PessoaJuridica pessoaJuridica) {
-        pessoasJuridicas.add(pessoaJuridica);
+    public boolean inserir(PessoaJuridica pessoaJuridica) {
+       return pessoasJuridicas.add(pessoaJuridica);
     }
 
     public void alterar(PessoaJuridica pessoaJuridicaAntiga, PessoaJuridica pessoaJuridicaNova) {

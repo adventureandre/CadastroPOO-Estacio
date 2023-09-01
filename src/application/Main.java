@@ -32,37 +32,7 @@ public class Main {
 
             switch (opcao) {
                 case 1:
-                    System.out.println("F - Pessoa Fisica | J - Pessoa Juridica");
-                    String tipoPessoa = sc.next();
-                    while (tipoPessoa.equals("F") || tipoPessoa.equals("f") || tipoPessoa.equals("J") || tipoPessoa.equals("j")) {
-                        if (tipoPessoa.equals("F") || tipoPessoa.equals("f")) {
-                            System.out.println("Digite o id da pessoa: ");
-                            int idPessoa = sc.nextInt();
-
-                            System.out.println("Insira os dados... ");
-
-                            System.out.print("Nome: ");
-                            sc.nextLine();
-                            String nomePessoa = sc.nextLine();
-
-                            System.out.print("Idade: ");
-                            int idadePessoa = sc.nextInt();
-
-                            System.out.print("Cpf: ");
-                            sc.nextLine();
-                            String cpfPessoa = sc.next();
-
-                            PessoaFisicaRepo repo1 = new PessoaFisicaRepo();
-                            if (repo1.inserir(new PessoaFisica(idPessoa, nomePessoa, cpfPessoa, idadePessoa))) {
-                                System.out.println(nomePessoa + " foi Adiocionado! Id: " + idPessoa);
-                            }
-
-                        } else if (tipoPessoa.equals("J") || tipoPessoa.equals("j")) {
-                            System.out.println("pessoa juridica");
-                        }
-                    }
-
-
+                        IncluirPessoas incluirpessoas = new IncluirPessoas(sc);
                     break;
                 case 2:
                     // Código para alterar pessoa
