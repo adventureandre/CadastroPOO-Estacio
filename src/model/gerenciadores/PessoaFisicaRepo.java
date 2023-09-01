@@ -10,8 +10,8 @@ import java.util.List;
 public class PessoaFisicaRepo {
     private ArrayList<PessoaFisica> pessoasFisicas = new ArrayList<>();
 
-    public void inserir(PessoaFisica pessoaFisica) {
-        pessoasFisicas.add(pessoaFisica);
+    public boolean inserir(PessoaFisica pessoaFisica) {
+       return pessoasFisicas.add(pessoaFisica);
     }
 
     public void alterar(PessoaFisica pessoaFisicaAntiga, PessoaFisica pessoaFisicaNova) {

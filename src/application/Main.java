@@ -7,57 +7,83 @@ import model.gerenciadores.PessoaJuridicaRepo;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        PessoaFisicaRepo repo1 = new PessoaFisicaRepo();
-        repo1.inserir(new PessoaFisica(1, "Andre", "78844554", 34));
-        repo1.inserir(new PessoaFisica(3, "Milena", "987654321", 23));
+        Locale.setDefault(Locale.US);
+        Scanner sc = new Scanner(System.in);
+        int opcao;
 
-// Salvando os dados
-        try {
-            repo1.persistir("pessoasFisicas.dat");
-        } catch (IOException e) {
-            System.out.println("Erro ao salvar os dados: " + e.getMessage());
-        }
+        do {
+            System.out.println("======================");
+            System.out.println("1 - Incluir Pessoa");
+            System.out.println("2 - Alterar Pessoa");
+            System.out.println("3 - Excluir Pessoa");
+            System.out.println("4 - Buscar pelo Id");
+            System.out.println("5 - Exibir Todos");
+            System.out.println("6 - Persistir Dados");
+            System.out.println("7 - Recuperar Dados");
+            System.out.println("0 - Finalizar Programa");
+            System.out.println("======================");
+            opcao = sc.nextInt();
 
-//aki fez a recuperaçao
-        PessoaFisicaRepo repo2 = new PessoaFisicaRepo();
-        try {
-            repo2.recuperar("pessoasFisicas.dat");
-        } catch (IOException | ClassNotFoundException erro) {
-            System.out.println("Erro ao recuperar os dados: " + erro.getMessage());
-        }
+            switch (opcao) {
+                case 1:
+                    System.out.println("F - Pessoa Fisica | J - Pessoa Juridica");
+                    String tipoPessoa = sc.next();
+                    System.out.println("Digite o id da pessoa: ");
+                    int idPessoa = sc.nextInt();
+                    System.out.println("Insira os dados... ");
+                    System.out.print("Nome: ");
+                    sc.nextLine();
+                    String nomePessoa = sc.nextLine();
+                    System.out.print("Idade: ");
+                    int idadePessoa = sc.nextInt();
+                    System.out.print("Cpf: ");
+                    sc.nextLine();
+                    String cpfPessoa = sc.next();
 
-// Recuperando a lista das pessoas
-        List<PessoaFisica> pessoasFisicasLista = repo2.obterTodos();
-        for (PessoaFisica pessoa : pessoasFisicasLista) {
-            pessoa.exibir();
-            System.out.println("<<<-------------------------->>>");
-        }
+                    if (tipoPessoa.equals("F") || tipoPessoa.equals("f")){
+                        PessoaFisicaRepo repo1 = new PessoaFisicaRepo();
+                        if(repo1.inserir(new PessoaFisica(idPessoa, nomePessoa, cpfPessoa, idadePessoa))){
+                            System.out.println(nomePessoa+" foi Adiocionado! Id: "+idPessoa);
+                        }
+                    }else{
 
-// Pessoas Jurídicas
-        PessoaJuridicaRepo repo3 = new PessoaJuridicaRepo();
-        repo3.inserir(new PessoaJuridica(1, "Empresa A", "123456789"));
-        repo3.inserir(new PessoaJuridica(2, "Empresa B", "987654321"));
+                    }
 
-        try {
-            repo3.persistir("pessoasJuridicas.dat");
-        } catch (IOException e) {
-            System.out.println("Erro ao persistir os dados: " + e.getMessage());
-        }
-        PessoaJuridicaRepo repo4 = new PessoaJuridicaRepo();
-        try {
-            repo4.recuperar("pessoasJuridicas.dat");
-        } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Erro ao recuperar os dados: " + e.getMessage());
-        }
+                    break;
+                case 2:
+                    // Código para alterar pessoa
+                    break;
+                case 3:
+                    // Código para excluir pessoa
+                    break;
+                case 4:
+                    // Código para buscar pelo Id
+                    break;
+                case 5:
+                    // Código para exibir todos
+                    break;
+                case 6:
+                    // Código para persistir dados
+                    break;
+                case 7:
+                    // Código para recuperar dados
+                    break;
+                case 0:
+                    System.out.println("Programa finalizado.");
+                    break;
+                default:
+                    System.out.println("Opção inválida. Escolha novamente.");
+                    break;
+            }
 
-// Exibir os dados
-        List<PessoaJuridica> pessoasJuridicasList = repo4.obterTodos();
-        for (PessoaJuridica pessoa : pessoasJuridicasList) {
-            pessoa.exibir();
-            System.out.println("<<<-------------------------->>>");
-        }
+        } while (opcao != 0);
+
+        sc.close();
     }
 }
