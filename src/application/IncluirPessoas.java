@@ -52,6 +52,7 @@ public class IncluirPessoas {
                     tipoPessoa = "null";
                 }else{
                     System.out.println("Essa pessoa já existe!");
+                    tipoPessoa = "null";
                 }
 
             } else if (tipoPessoa.equals("j")) {

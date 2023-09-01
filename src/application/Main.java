@@ -46,11 +46,7 @@ public class Main {
                     // Código para buscar pelo Id
                     break;
                 case 5:
-                    List<PessoaFisica> pessoasFisicasLista = repo1.obterTodos();
-                    for (PessoaFisica pessoa : pessoasFisicasLista) {
-                        pessoa.exibir();
-                        System.out.println("<<<-------------------------->>>");
-                    }
+                    ListaTodos listaTodos = new ListaTodos(sc,repo1, repo2);
                     break;
                 case 6:
                     // Código para persistir dados
