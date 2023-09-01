@@ -37,11 +37,17 @@ public class BuscarPessoa {
                 sc.nextLine();
 
                 PessoaFisica getBuscaPessoa = pessoa.obter(idPessoa);
-                System.out.println("Id: " + getBuscaPessoa.getId());
-                System.out.println("Nome: " + getBuscaPessoa.getNome());
-                System.out.println("CPF: " + getBuscaPessoa.getCpf());
-                System.out.println("Idade: " + getBuscaPessoa.getIdade());
-                System.out.println("-------------------------------");
+                if (getBuscaPessoa != null) {
+
+
+                    System.out.println("Id: " + getBuscaPessoa.getId());
+                    System.out.println("Nome: " + getBuscaPessoa.getNome());
+                    System.out.println("CPF: " + getBuscaPessoa.getCpf());
+                    System.out.println("Idade: " + getBuscaPessoa.getIdade());
+                    System.out.println("-------------------------------");
+                } else {
+                    System.out.println("Pessoa não encontrada!");
+                }
                 tipoPessoa = "null";
 
 
@@ -52,10 +58,14 @@ public class BuscarPessoa {
 
 
                 PessoaJuridica getBuscaPessoa = empresa.obter(idEmpresa);
-                System.out.println("Id: " + getBuscaPessoa.getId());
-                System.out.println("Nome: " + getBuscaPessoa.getNome());
-                System.out.println("CNPJ: " + getBuscaPessoa.getCnpj());
-                System.out.println("-------------------------------");
+                if (getBuscaPessoa != null) {
+                    System.out.println("Id: " + getBuscaPessoa.getId());
+                    System.out.println("Nome: " + getBuscaPessoa.getNome());
+                    System.out.println("CNPJ: " + getBuscaPessoa.getCnpj());
+                    System.out.println("-------------------------------");
+                } else {
+                    System.out.println("Empresa não encontrada!");
+                }
                 tipoPessoa = "null";
             }
         } while ((tipoPessoa.equals("f") || tipoPessoa.equals("j")));
