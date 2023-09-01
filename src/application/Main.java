@@ -1,4 +1,10 @@
 package application;
+
+import model.entidades.PessoaFisica;
+import model.gerenciadores.PessoaFisicaRepo;
+import model.gerenciadores.PessoaJuridicaRepo;
+
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -7,6 +13,9 @@ public class Main {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
         int opcao;
+
+        PessoaFisicaRepo repo1 = new PessoaFisicaRepo();
+        PessoaJuridicaRepo repo2 = new PessoaJuridicaRepo();
 
         do {
             System.out.println("======================");
@@ -21,12 +30,14 @@ public class Main {
             System.out.println("======================");
             opcao = sc.nextInt();
 
+
             switch (opcao) {
                 case 1:
-                        IncluirPessoas incluirpessoas = new IncluirPessoas(sc);
+                    //Adicionar Pessoas Juridica e Fisica
+                        IncluirPessoas incluirpessoas = new IncluirPessoas(sc, repo1, repo2);
                     break;
                 case 2:
-                    // Código para alterar pessoa
+                    AlterarPessoa alterarPessoa = new AlterarPessoa(sc, repo1, repo2);
                     break;
                 case 3:
                     // Código para excluir pessoa
@@ -35,7 +46,11 @@ public class Main {
                     // Código para buscar pelo Id
                     break;
                 case 5:
-                    // Código para exibir todos
+                    List<PessoaFisica> pessoasFisicasLista = repo1.obterTodos();
+                    for (PessoaFisica pessoa : pessoasFisicasLista) {
+                        pessoa.exibir();
+                        System.out.println("<<<-------------------------->>>");
+                    }
                     break;
                 case 6:
                     // Código para persistir dados

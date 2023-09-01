@@ -5,24 +5,22 @@ import model.entidades.PessoaJuridica;
 import model.gerenciadores.PessoaFisicaRepo;
 import model.gerenciadores.PessoaJuridicaRepo;
 
-import java.util.List;
 import java.util.Scanner;
 
-public class IncluirPessoas {
-
-    private  Scanner sc;
-    private  PessoaFisicaRepo pessoa;
+public class AlterarPessoa {
+    private Scanner sc;
+    private PessoaFisicaRepo pessoa;
     private PessoaJuridicaRepo empresa;
 
-    public IncluirPessoas(Scanner sc, PessoaFisicaRepo pessoa,PessoaJuridicaRepo empresa) {
+    public AlterarPessoa(Scanner sc, PessoaFisicaRepo pessoa, PessoaJuridicaRepo empresa) {
         this.sc = sc;
-        this.pessoa =  pessoa;
+        this.pessoa = pessoa;
         this.empresa = empresa;
-        addPessoa();
+        alterarPessoa();
     }
 
-    private void addPessoa(){
-        System.out.println("====INCLUIR====");
+    private void alterarPessoa() {
+        System.out.println("====ALTERAR====");
         System.out.println("F - Pessoa Fisica | J - Pessoa Juridica");
         String tipoPessoa = sc.next().toLowerCase();
 
@@ -32,7 +30,7 @@ public class IncluirPessoas {
                 int idPessoa = sc.nextInt();
                 sc.nextLine(); // Limpar o buffer
 
-                System.out.println("Insira os dados... ");
+                System.out.println("Insira os Novos dados... ");
                 System.out.print("Nome: ");
                 String nomePessoa = sc.nextLine();
 
@@ -43,27 +41,27 @@ public class IncluirPessoas {
                 System.out.print("Cpf: ");
                 String cpfPessoa = sc.next();
 
-                if (pessoa.inserir(new PessoaFisica(idPessoa, nomePessoa, cpfPessoa, idadePessoa))) {
-                    System.out.println(nomePessoa + " foi Adicionado! Id: " + idPessoa);
-                    tipoPessoa = "null";
-                }
+                this.pessoa.alterar(this.pessoa.obter(idadePessoa), (new PessoaFisica(idPessoa, nomePessoa, cpfPessoa, idadePessoa)));
+
+                System.out.println("Dados alterados com Sucesso!");
+                tipoPessoa = "null";
+
             } else if (tipoPessoa.equals("j")) {
                 System.out.println("Digite o id da Empresa: ");
                 int idEmpresa = sc.nextInt();
                 sc.nextLine(); // Limpar o buffer
 
-                System.out.println("Insira os dados... ");
+                System.out.println("Insira os Novos dados... ");
                 System.out.print("Nome: ");
                 String nomeEmpresa = sc.nextLine();
 
                 System.out.print("CNPJ: ");
                 String cnpjEmpresa = sc.next();
 
-                if (empresa.inserir(new PessoaJuridica(idEmpresa, nomeEmpresa, cnpjEmpresa))) {
-                    System.out.println(nomeEmpresa + " foi Adicionado! Id: " + idEmpresa);
-                    tipoPessoa = "null";
-                }
+                this.empresa.alterar(this.empresa.obter(idEmpresa), (new PessoaJuridica(idEmpresa, nomeEmpresa, cnpjEmpresa)));
+                System.out.println("Dados alterados com Sucesso!");
+                tipoPessoa = "null";
             }
-        }while ((tipoPessoa.equals("f") || tipoPessoa.equals("j")));
+        } while ((tipoPessoa.equals("f") || tipoPessoa.equals("j")));
     }
 }
