@@ -1,14 +1,5 @@
 package application;
-
-import model.entidades.PessoaFisica;
-import model.entidades.PessoaJuridica;
-import model.gerenciadores.PessoaFisicaRepo;
-import model.gerenciadores.PessoaJuridicaRepo;
-
-import java.io.IOException;
-import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
