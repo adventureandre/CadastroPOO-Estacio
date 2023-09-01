@@ -11,14 +11,23 @@ public class PessoaFisicaRepo {
     private ArrayList<PessoaFisica> pessoasFisicas = new ArrayList<>();
 
     public boolean inserir(PessoaFisica pessoaFisica) {
-       return pessoasFisicas.add(pessoaFisica);
+        for (PessoaFisica pessoaExistente : pessoasFisicas) {
+            if (pessoaExistente.getCpf().equals(pessoaFisica.getCpf()) ||
+                    pessoaExistente.getId() == pessoaFisica.getId()) {
+                return false;
+            }
+        }
+
+        return pessoasFisicas.add(pessoaFisica);
     }
 
-    public void alterar(PessoaFisica pessoaFisicaAntiga, PessoaFisica pessoaFisicaNova) {
+    public boolean alterar(PessoaFisica pessoaFisicaAntiga, PessoaFisica pessoaFisicaNova) {
         int index = pessoasFisicas.indexOf(pessoaFisicaAntiga);
         if (index != -1) {
             pessoasFisicas.set(index, pessoaFisicaNova);
+            return true;
         }
+        return false;
     }
 
     public void excluir(int id) {

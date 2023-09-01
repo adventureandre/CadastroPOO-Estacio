@@ -21,14 +21,19 @@ public class AlterarPessoa {
 
     private void alterarPessoa() {
         System.out.println("====ALTERAR====");
-        System.out.println("F - Pessoa Fisica | J - Pessoa Juridica");
-        String tipoPessoa = sc.next().toLowerCase();
+        String tipoPessoa;
+
+        do {
+            System.out.println("F - Pessoa Fisica | J - Pessoa Juridica");
+            tipoPessoa = sc.next().toLowerCase();
+        } while (!tipoPessoa.equals("f") && !tipoPessoa.equals("j"));
+
 
         do {
             if (tipoPessoa.equals("f")) {
                 System.out.println("Digite o id da pessoa: ");
                 int idPessoa = sc.nextInt();
-                sc.nextLine(); // Limpar o buffer
+                sc.nextLine();
 
                 System.out.println("Insira os Novos dados... ");
                 System.out.print("Nome: ");
@@ -36,15 +41,22 @@ public class AlterarPessoa {
 
                 System.out.print("Idade: ");
                 int idadePessoa = sc.nextInt();
-                sc.nextLine(); // Limpar o buffer
+                sc.nextLine();
 
                 System.out.print("Cpf: ");
                 String cpfPessoa = sc.next();
 
-                this.pessoa.alterar(this.pessoa.obter(idadePessoa), (new PessoaFisica(idPessoa, nomePessoa, cpfPessoa, idadePessoa)));
+                PessoaFisica pessoaantiga = pessoa.obter(idPessoa);
 
-                System.out.println("Dados alterados com Sucesso!");
+                if (this.pessoa.alterar(this.pessoa.obter(idPessoa),
+                        (new PessoaFisica(idPessoa, nomePessoa, cpfPessoa, idadePessoa)))) {
+                    System.out.println("Dados de " + pessoaantiga.getNome() + " foi alterados com Sucesso!");
+                    tipoPessoa = "null";
+                }
+
+                System.out.println("Erro id nao existe!");
                 tipoPessoa = "null";
+
 
             } else if (tipoPessoa.equals("j")) {
                 System.out.println("Digite o id da Empresa: ");

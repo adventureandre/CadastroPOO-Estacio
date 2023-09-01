@@ -23,8 +23,12 @@ public class IncluirPessoas {
 
     private void addPessoa(){
         System.out.println("====INCLUIR====");
-        System.out.println("F - Pessoa Fisica | J - Pessoa Juridica");
-        String tipoPessoa = sc.next().toLowerCase();
+        String tipoPessoa;
+        do {
+            System.out.println("F - Pessoa Fisica | J - Pessoa Juridica");
+            tipoPessoa = sc.next().toLowerCase();
+        }while (!tipoPessoa.equals("f") && !tipoPessoa.equals("j"));
+
 
         do {
             if (tipoPessoa.equals("f")) {
@@ -46,7 +50,10 @@ public class IncluirPessoas {
                 if (pessoa.inserir(new PessoaFisica(idPessoa, nomePessoa, cpfPessoa, idadePessoa))) {
                     System.out.println(nomePessoa + " foi Adicionado! Id: " + idPessoa);
                     tipoPessoa = "null";
+                }else{
+                    System.out.println("Essa pessoa já existe!");
                 }
+
             } else if (tipoPessoa.equals("j")) {
                 System.out.println("Digite o id da Empresa: ");
                 int idEmpresa = sc.nextInt();
