@@ -15,8 +15,8 @@ arquivos, baseado na tecnologia Java.
 ## Credits
 
 - [André Luíz F Souza](https://github.com/adventureandre) (Developer)
-- [ADVENTUREANDRE](https://github.com/adventureandre) (Team)
-- [All Contributors](https://github.com/) (ALL)
+- [ADVENTUREANDRE](https://www.linkedin.com/in/adventureandre) (Linkedin)
+- [All Contributors](https://adventure.dev.br) (Site)
 
 ## License
 
