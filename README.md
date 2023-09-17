@@ -16,7 +16,7 @@ arquivos, baseado na tecnologia Java.
 
 - [André Luíz F Souza](https://github.com/adventureandre) (Developer)
 - [ADVENTUREANDRE](https://www.linkedin.com/in/adventureandre) (Linkedin)
-- [All Contributors](https://adventure.dev.br) (Site)
+- [Site](https://adventure.dev.br)
 
 ## License
 
