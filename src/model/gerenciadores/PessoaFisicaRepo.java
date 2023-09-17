@@ -2,7 +2,6 @@ package model.gerenciadores;
 
 import model.entidades.PessoaFisica;
 
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +11,7 @@ public class PessoaFisicaRepo {
 
     public boolean inserir(PessoaFisica pessoaFisica) {
         for (PessoaFisica pessoaExistente : pessoasFisicas) {
-            if (pessoaExistente.getCpf().equals(pessoaFisica.getCpf()) ||
-                    pessoaExistente.getId() == pessoaFisica.getId()) {
+            if (pessoaExistente.getCpf().equals(pessoaFisica.getCpf()) || pessoaExistente.getId() == pessoaFisica.getId()) {
                 return false;
             }
         }
@@ -42,8 +40,7 @@ public class PessoaFisicaRepo {
 
     public PessoaFisica obter(int id) {
         for (PessoaFisica pessoa : pessoasFisicas) {
-            if (pessoa.getId() == id) {
-                return pessoa;
+            if (pessoa.getId() == id) { return pessoa;
             }
         }
         return null;
@@ -62,8 +59,7 @@ public class PessoaFisicaRepo {
 
     public void recuperar(String nomeArquivo) throws IOException, ClassNotFoundException {
         try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(nomeArquivo))) {
-            pessoasFisicas = (ArrayList<PessoaFisica>) inputStream.readObject();
-            System.out.println("Dados de Pessoa Fisica Recuperados.");
+            pessoasFisicas = (ArrayList<PessoaFisica>) inputStream.readObject(); System.out.println("Dados de Pessoa Fisica Recuperados.");
         }
     }
 }

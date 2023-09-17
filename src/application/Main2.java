@@ -53,7 +53,7 @@ public class Main2 {
             System.out.println("Erro ao recuperar os dados: " + e.getMessage());
         }
 
-// Exibir os dados
+// Exibir os pessoa juridicas
         List<PessoaJuridica> pessoasJuridicasList = repo4.obterTodos();
         for (PessoaJuridica pessoa : pessoasJuridicasList) {
             pessoa.exibir();

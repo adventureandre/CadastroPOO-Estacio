@@ -12,10 +12,8 @@ public class Main {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
         int opcao;
-
         PessoaFisicaRepo repo1 = new PessoaFisicaRepo();
         PessoaJuridicaRepo repo2 = new PessoaJuridicaRepo();
-
         do {
             System.out.println("======================");
             System.out.println("1 - Incluir Pessoa");
@@ -27,12 +25,11 @@ public class Main {
             System.out.println("7 - Recuperar Dados");
             System.out.println("0 - Finalizar Programa");
             System.out.println("======================");
+
             opcao = sc.nextInt();
-
-
             switch (opcao) {
                 case 1:
-                    //Adicionar Pessoas Juridica e Fisica
+//Adicionar Pessoas Juridica e Fisica
                     IncluirPessoas incluirpessoas = new IncluirPessoas(sc, repo1, repo2);
                     break;
                 case 2:
@@ -51,7 +48,8 @@ public class Main {
                     System.out.println("====Dados Salvos====");
                     try {
                         repo1.persistir("pessoasFisicas.dat");
-                        repo2.persistir("pessoasJuridica.dat");
+                        repo2.persistir("pessoasJuridicas.dat");
+
                     } catch (IOException erro) {
                         System.out.println("Erro ao recuperar os dados: " + erro.getMessage());
                     }
@@ -60,7 +58,7 @@ public class Main {
                     System.out.println("====Dados Recuperados====");
                     try {
                         repo1.recuperar("pessoasFisicas.dat");
-                        repo2.recuperar("pessoasJuridica.dat");
+                        repo2.recuperar("pessoasJuridicas.dat");
                     } catch (IOException | ClassNotFoundException e) {
                         System.out.println("Erro ao recuperar os dados: " + e.getMessage());
                     }
@@ -72,9 +70,8 @@ public class Main {
                     System.out.println("Opção inválida. Escolha novamente.");
                     break;
             }
-
-        } while (opcao != 0);
-
+        }
+        while (opcao != 0);
         sc.close();
     }
 }
